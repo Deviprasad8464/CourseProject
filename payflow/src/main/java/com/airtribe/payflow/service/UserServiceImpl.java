@@ -1,4 +1,20 @@
 package com.airtribe.payflow.service;
 
-public class UserServiceImpl {
+
+import com.airtribe.payflow.Entity.User;
+import com.airtribe.payflow.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public User register(User user) {
+
+        return userRepository.save(user);
+    }
 }
