@@ -9,6 +9,10 @@ import java.util.List;
 @Service
 public interface UserService {
 
-    User register(User user);
+    User registerUser(User user);
+
+    User getUserById(Long userId);
+
+    User getUserByUpiId(String upiId);
     List<User> getAllUsers();
 }
