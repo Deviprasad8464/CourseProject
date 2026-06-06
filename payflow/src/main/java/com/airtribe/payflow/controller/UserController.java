@@ -1,24 +1,30 @@
 package com.airtribe.payflow.controller;
 
 
+import com.airtribe.payflow.Entity.User;
+import com.airtribe.payflow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    public User registerUser(@RequestBody User user)
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody User user)
     {
         try{
-          return userService.register(user);
+          User response=userService.register(user);
+          return ResponseEntity.ok(response);
         }
         catch (Exception e)
         {
-            return new Exception("user was not registered")
+            return ResponseEntity.badRequest().body("User was not registered");
         }
     }
 
