@@ -37,8 +37,6 @@ public class UserController {
        return userService.getAllUsers();
     }
 
-    }
-
     @GetMapping("/id/{userId}")
    public ResponseEntity<?> getUserById(@PathVariable Long userId)
    {

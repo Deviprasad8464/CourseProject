@@ -30,7 +30,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUpiId(String upiId) {
-        return (User) userRepository.findByUpiId(upiId).orElseThrow(()-> new RuntimeException("user not found"+upiId));
+        return (User) userRepository.findByUpiId(upiId).orElseThrow(() -> new RuntimeException("user not found" + upiId));
+    }
 
     @Override
     public List<User> getAllUsers(){
